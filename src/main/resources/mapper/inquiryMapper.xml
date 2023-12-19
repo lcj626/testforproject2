@@ -32,5 +32,41 @@
         JOIN TBL_USER PI ON U.USER_NO=PI.USER_NO
     </select>
 
+    <select id="searchInquiry" resultMap="inquiryResult">
+        SELECT
+            *
+          FROM TBL_INQUIRY
+         WHERE INQUIRY_NO = ${code}
+    </select>
+
+    <insert id="insertInquiry" parameterType="com.yyc.bunnyroom.inquiry.dto.InquiryDTO">
+        INSERT INTO TBL_INQUIRY
+        (
+            INQUIRY_NO,
+            USER_NO,
+            INQUIRY_TITLE,
+            INQUIRY_REGIST_DATE,
+            INQUIRY_CONTENTS,
+            INQUIRY_UPDATE_DATE,
+            INQUIRY_STATUS
+        )VALUES(
+            #{code},
+            #{userNo},
+            #{inquiryTitle},
+            #{inquiryRegistDate},
+            #{inquiryContents},
+            #{inquiryUpdateDate},
+            #{inquiryStatus}
+        )
+    </insert>
+
+    <update id="updateInquiry" parameterType="com.yyc.bunnyroom.inquiry.dto.InquiryDTO">
+        UPDATE TBL_INQUIRY
+        SET
+            INQUIRY_TITLE = #{inquiryTitle},
+            INQUIRY_CONTENTS = #{inquiryContents}
+        WHERE INQUIRY_TITLE= #{inquiryTitle}
+    </update>
+
 
 </mapper>

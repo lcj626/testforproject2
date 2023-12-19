@@ -16,12 +16,10 @@
         <td th:text="${inquiry.code}"></td>
         <td th:text="${inquiry.nickname}"></td>
         <td>
-            <a th:text="${inquiry.inquiryTitle}" th:href="@{/inquiry/allinquirysContent(code=${inquiry.code})}"></a>
+            <a th:text="${inquiry.inquiryTitle}" th:href="@{/inquirys/searchInquiry(code=${inquiry.code})}"></a>
         </td>
         <td th:text="${inquiry.inquiryRegistDate}"></td>
     </tr>
-
-
 </table>
 <button onclick="location.href='/'">인덱스</button>
 </body>
